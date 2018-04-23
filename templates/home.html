@@ -4,8 +4,11 @@
 {% block content %}
 <div class="row" style="padding-top:10px;">
     <form action="{% url 'send' %}" method="post">
-        <input type="text" name="phone" id="phone" placeholder="Mobile"/>
-        <input type="text" name="message" id="message" placeholder="Message"/>
+        <p>
+            Mobile number should start with country code eg <strong>(918800673006)</strong>
+        </p>
+        <input type="text" name="phone" id="phone" placeholder=" Mobile"/><br><br>
+        <input type="text" name="message" id="message" placeholder=" Message" style="width:700px;"/><br><br>
         <input type="submit" value="Submit"/>
 
     </form>
