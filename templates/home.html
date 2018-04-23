@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}{{title}} {% endblock title%}
+
+{% block content %}
+<div class="row" style="padding-top:10px;">
+    <form action="{% url 'send' %}" method="post">
+        <input type="text" name="phone" id="phone" placeholder="Mobile"/>
+        <input type="text" name="message" id="message" placeholder="Message"/>
+        <input type="submit" value="Submit"/>
+
+    </form>
+</div>
+{% endblock %}
