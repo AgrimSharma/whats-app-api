@@ -15,7 +15,7 @@ def home(request):
             "phone": "{}".format(phone),
             "body": "{}".format(text)
         }
-        url = "https://eu4.chat-api.com/instance1918/message?token=aq9cfvr84pgviw1r"
+        url = "https://eu4.chat-api.com/instance1876/message?token=l25irc801wijrfq9"
         req = requests.post(url, data).json()
         return HttpResponse(json.dumps(req))
 
