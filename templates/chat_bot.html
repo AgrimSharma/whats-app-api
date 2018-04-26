@@ -32,7 +32,18 @@ body {
     border-radius: 5px;
     padding: 10px;
     margin: 10px 0;
+    width: 70%;
 }
+.main_right {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 70%;
+    margin-left: 150px;
+}
+
 .darker {
     border-color: #ccc;
     background-color: #ddd;
@@ -63,6 +74,7 @@ body {
     color: #999;
 }
 </style>
+<div style="border:1px;">
 <div class="container" id="message" onload="scrollToBottom()">
 
 </div>
@@ -72,6 +84,7 @@ body {
     <input type="button" class="butt btn btn-primary btn-sm" id="butt" value="Send" />
     </footer>
 </div>
+    </div>
 <script>
 
 $(".question").keyup(function(event) {
@@ -90,7 +103,7 @@ $(".butt").click(function(){
       type: "post",
       data: {"question": question},
       success: function(response){
-            $('.container').append("<div class='main darker'><p><b>Bot</b> :- " + '<span>'+ response + '</span></p></div>');
+            $('.container').append("<div class='main_right darker pull-right' style='text-align:right;'><p><b>Bot</b> :- " + '<span>'+ response + '</span></p></div>');
             $(".question").val("");
             $(".container").scrollTop($(".container")[0].scrollHeight);
 
