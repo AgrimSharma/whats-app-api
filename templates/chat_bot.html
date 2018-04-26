@@ -84,6 +84,7 @@ $(".butt").click(function(){
     var question = $(".question").val()
 
     $('.container').append("<div class='main'><p><b>You</b> :- " +'<span>'+ question + '</span></p></div>');
+           $("#message").scrollTop($("#message")[0].scrollHeight);
     $.ajax({
       url: "{% url 'chat_bot' %}",
       type: "post",
@@ -91,11 +92,13 @@ $(".butt").click(function(){
       success: function(response){
             $('.container').append("<div class='main darker'><p><b>Bot</b> :- " + '<span>'+ response + '</span></p></div>');
             $(".question").val("");
+            $(".container").scrollTop($(".container")[0].scrollHeight);
+
           }
        });
-       $("#message").scrollTop($("#message")[0].scrollHeight);
 
     });
+
 
 
 </script>
