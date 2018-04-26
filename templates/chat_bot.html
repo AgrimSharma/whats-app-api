@@ -10,6 +10,7 @@
 </head>
 <body>
 <style>
+.scrollable { width:300px; height:400px; overflow-y:auto; overflow-x:hidden; clip-rect:(0px, 300px, 400px, 0px); }
 body {
     margin: 0 auto;
     max-width: 800px;
@@ -22,7 +23,9 @@ body {
     height:500px;
     overflow-y:scroll;
     padding-right: 10px;
-    }
+        overflow-y: auto;
+
+   }
 .main {
     border: 2px solid #dedede;
     background-color: #f1f1f1;
@@ -60,31 +63,41 @@ body {
     color: #999;
 }
 </style>
-<div class="container">
+<div class="container" id="message" onload="scrollToBottom()">
 
 </div>
-<div>
+<div >
     <footer  style="position: fixed; height: 100px; bottom: 0; width: 100%;text-align: left;">
-    <input type="text" class="col-md-6 question" name="question" />
-    <input type="button" class="butt btn btn-primary btn-sm" value="Send" />
+    <input type="text" id="question" class="col-md-6 question" name="question" />
+    <input type="button" class="butt btn btn-primary btn-sm" id="butt" value="Send" />
     </footer>
 </div>
 <script>
+
+$(".question").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $(".butt").click();
+    }
+});
+
 $(".butt").click(function(){
     var question = $(".question").val()
+
     $('.container').append("<div class='main'><p><b>You</b> :- " +'<span>'+ question + '</span></p></div>');
     $.ajax({
       url: "{% url 'chat_bot' %}",
       type: "post",
       data: {"question": question},
       success: function(response){
-      console.log(response);
-
             $('.container').append("<div class='main darker'><p><b>Bot</b> :- " + '<span>'+ response + '</span></p></div>');
             $(".question").val("");
           }
        });
+       $("#message").scrollTop($("#message")[0].scrollHeight);
+
     });
+
+
 </script>
 
 </body>
